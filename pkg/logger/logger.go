@@ -17,7 +17,7 @@ func init() {
 func setLogger() *logrus.Logger {
 	l := logrus.StandardLogger()
 	l.SetFormatter(&logrus.TextFormatter{
-		TimestampFormat: time.RFC3339,
+		TimestampFormat: time.RFC3339Nano,
 		DisableQuote:    true,
 	})
 	l.SetOutput(os.Stdout)
