@@ -2,14 +2,14 @@ package app
 
 import (
 	"context"
-	"gomoku/pkg/http/handler"
+	"gomoku/pkg/http/handler/inner"
 	"gomoku/pkg/http/server"
 	"os"
 )
 
 func Run(ctx context.Context) error {
 	// add config
-	hlr := handler.NewHandler()
+	hlr := inner.NewHandler()
 	router := hlr.InitRoutes()
 
 	// todo pass addr from config

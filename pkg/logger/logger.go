@@ -3,6 +3,7 @@ package logger
 import (
 	"github.com/sirupsen/logrus"
 	"os"
+	"time"
 )
 
 var (
@@ -15,7 +16,10 @@ func init() {
 
 func setLogger() *logrus.Logger {
 	l := logrus.StandardLogger()
-	l.SetFormatter(&logrus.JSONFormatter{})
+	l.SetFormatter(&logrus.TextFormatter{
+		TimestampFormat: time.RFC3339,
+		DisableQuote:    true,
+	})
 	l.SetOutput(os.Stdout)
 	return l
 }
@@ -42,4 +46,16 @@ func Debug(args ...interface{}) {
 
 func Debugf(format string, args ...interface{}) {
 	logger.Debugf(format, args...)
+}
+
+func Warn(args ...interface{}) {
+	logger.Warn(args...)
+}
+
+func Warnf(format string, args ...interface{}) {
+	logger.Warnf(format, args...)
+}
+
+func With(key string, value interface{}) *logrus.Entry {
+	return logger.WithField(key, value)
 }

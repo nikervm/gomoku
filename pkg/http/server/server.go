@@ -10,7 +10,7 @@ import (
 )
 
 type Server struct {
-	ctx context.Context
+	ctx    context.Context
 	server *http.Server
 }
 
@@ -18,10 +18,10 @@ func NewHttpServer(ctx context.Context, addr string, handler http.Handler) *Serv
 	return &Server{
 		ctx: ctx,
 		server: &http.Server{
-			Handler: handler,
-			Addr: addr,
-			ReadTimeout: 5 * time.Second,
-			WriteTimeout: 10 * time.Second,
+			Handler:           handler,
+			Addr:              addr,
+			ReadTimeout:       5 * time.Second,
+			WriteTimeout:      10 * time.Second,
 			ReadHeaderTimeout: 2 * time.Second,
 		},
 	}
